@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz Esforço x Impacto - Pan Eng Process & Quality</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class="ph-bold ph-rocket-launch"></i>
+                <div class="header-text-container">
+                    <span>Pan Eng Process & Quality</span>
+                    <small class="developer-credit">Desenvolvido por Marcos Garçon (Analista de Qualidade)</small>
+                </div>
+            </div>
+            <ul class="tool-list">
+                <li class="tool-item" data-page="index.html"><i class="ph-bold ph-house"></i><span>Início</span></li>
+                <li class="tool-category">Análise de Processos</li>
+                <li class="tool-item" data-page="cronoanalise.html"><i class="ph-bold ph-timer"></i><span>Cronoanálise MTM</span></li>
+                <li class="tool-item" data-page="vsm.html"><i class="ph-bold ph-projector-screen-chart"></i><span>Mapeamento VSM</span></li>
+                <li class="tool-item" data-page="histograma.html"><i class="ph-bold ph-chart-bar-horizontal"></i><span>Histograma</span></li>
+                <li class="tool-item" data-page="diagrama-dispersao.html"><i class="ph-bold ph-chart-scatter"></i><span>Diagrama de Dispersão</span></li>
+                <li class="tool-item" data-page="pareto.html"><i class="ph-bold ph-chart-bar"></i><span>Diagrama de Pareto</span></li>
+                <li class="tool-item" data-page="cep.html"><i class="ph-bold ph-chart-line"></i><span>CEP</span></li>
+                <li class="tool-item" data-page="msa.html"><i class="ph-bold ph-rulers"></i><span>MSA</span></li>
+                <li class="tool-category">Melhoria Contínua</li>
+                <li class="tool-item" data-page="dmaic.html"><i class="ph-bold ph-chart-pie-slice"></i><span>DMAIC</span></li>
+                <li class="tool-item" data-page="planodeacao.html"><i class="ph-bold ph-list-checks"></i><span>Plano de Ação (5W2H)</span></li>
+                <li class="tool-item" data-page="5porques.html"><i class="ph-bold ph-question"></i><span>5 Porquês</span></li>
+                <li class="tool-item" data-page="ishikawa.html"><i class="ph-bold ph-graph"></i><span>Ishikawa (6M)</span></li>
+                <li class="tool-item" data-page="kaizen.html"><i class="ph-bold ph-lightbulb"></i><span>Kaizen</span></li>
+                <li class="tool-item" data-page="relatorio-a3.html"><i class="ph-bold ph-file-text"></i><span>Relatório A3</span></li>
+                <li class="tool-category">Análise Estratégica</li>
+                <li class="tool-item" data-page="matriz-gut.html"><i class="ph-bold ph-warning-octagon"></i><span>Matriz GUT</span></li>
+                <li class="tool-item" data-page="matriz-esforco-impacto.html"><i class="ph-bold ph-scales"></i><span>Esforço x Impacto</span></li>
+                <li class="tool-item" data-page="swot.html"><i class="ph-bold ph-arrows-split"></i><span>Análise SWOT</span></li>
+                <li class="tool-item" data-page="kpi.html"><i class="ph-bold ph-gauge"></i><span>Dashboard KPIs</span></li>
+                <li class="tool-category">Qualidade Assegurada</li>
+                <li class="tool-item" data-page="folha-verificacao.html"><i class="ph-bold ph-list-dashes"></i><span>Folha de Verificação</span></li>
+                <li class="tool-item" data-page="fmea.html"><i class="ph-bold ph-shield-warning"></i><span>FMEA</span></li>
+                <li class="tool-item" data-page="8d.html"><i class="ph-bold ph-steps"></i><span>8D</span></li>
+                <li class="tool-item" data-page="ppap.html"><i class="ph-bold ph-stamp"></i><span>PPAP</span></li>
+                <li class="tool-item" data-page="apqp.html"><i class="ph-bold ph-map-trifold"></i><span>APQP</span></li>
+                <li class="tool-item" data-page="5s-checklist.html"><i class="ph-bold ph-check-square-offset"></i><span>Checklist 5S</span></li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="backup-btn" title="Fazer Backup de Todos os Dados"><i class="ph-bold ph-download-simple"></i><span>Backup</span></button>
+                <label for="restore-input" class="restore-label" title="Restaurar Dados"><i class="ph-bold ph-upload-simple"></i><span>Restaurar</span></label>
+                <input type="file" id="restore-input" style="display: none;" accept=".json">
+            </div>
+        </nav>
+        <main id="main-content">
+            <div class="container">
+                <h1>Matriz Esforço x Impacto</h1>
+                <p>Liste as iniciativas ou ações e classifique-as quanto ao esforço para implementar e ao impacto que gerarão. A matriz visual ajudará a identificar as prioridades.</p>
+                <div class="form-section">
+                    <h2>Dados de Entrada</h2>
+                    <table id="esforco-impacto-table">
+                        <thead>
+                            <tr>
+                                <th>Iniciativa / Ação</th>
+                                <th>Esforço (1-10)</th>
+                                <th>Impacto (1-10)</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <div class="button-group">
+                        <button id="add-ei-row" class="btn-secondary">Adicionar Iniciativa</button>
+                    </div>
+                </div>
+                <div class="form-section">
+                     <div class="button-group">
+                        <button id="generate-ei-chart-btn" class="btn-primary">Gerar/Atualizar Matriz</button>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h2>Matriz Visual</h2>
+                    <canvas id="esforco-impacto-chart"></canvas>
+                </div>
+            </div>
+        </main>
+
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

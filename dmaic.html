@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório DMAIC - Pan Eng Process & Quality</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class="ph-bold ph-rocket-launch"></i>
+                <div class="header-text-container">
+                    <span>Pan Eng Process & Quality</span>
+                    <small class="developer-credit">Desenvolvido por Marcos Garçon (Analista de Qualidade)</small>
+                </div>
+            </div>
+            <ul class="tool-list">
+                <li class="tool-item" data-page="index.html"><i class="ph-bold ph-house"></i><span>Início</span></li>
+                <li class="tool-category">Análise de Processos</li>
+                <li class="tool-item" data-page="cronoanalise.html"><i class="ph-bold ph-timer"></i><span>Cronoanálise MTM</span></li>
+                <li class="tool-item" data-page="vsm.html"><i class="ph-bold ph-projector-screen-chart"></i><span>Mapeamento VSM</span></li>
+                <li class="tool-item" data-page="histograma.html"><i class="ph-bold ph-chart-bar-horizontal"></i><span>Histograma</span></li>
+                <li class="tool-item" data-page="diagrama-dispersao.html"><i class="ph-bold ph-chart-scatter"></i><span>Diagrama de Dispersão</span></li>
+                <li class="tool-item" data-page="pareto.html"><i class="ph-bold ph-chart-bar"></i><span>Diagrama de Pareto</span></li>
+                <li class="tool-item" data-page="cep.html"><i class="ph-bold ph-chart-line"></i><span>CEP</span></li>
+                <li class="tool-item" data-page="msa.html"><i class="ph-bold ph-rulers"></i><span>MSA</span></li>
+                <li class="tool-category">Melhoria Contínua</li>
+                <li class="tool-item" data-page="dmaic.html"><i class="ph-bold ph-chart-pie-slice"></i><span>DMAIC</span></li>
+                <li class="tool-item" data-page="planodeacao.html"><i class="ph-bold ph-list-checks"></i><span>Plano de Ação (5W2H)</span></li>
+                <li class="tool-item" data-page="5porques.html"><i class="ph-bold ph-question"></i><span>5 Porquês</span></li>
+                <li class="tool-item" data-page="ishikawa.html"><i class="ph-bold ph-graph"></i><span>Ishikawa (6M)</span></li>
+                <li class="tool-item" data-page="kaizen.html"><i class="ph-bold ph-lightbulb"></i><span>Kaizen</span></li>
+                <li class="tool-item" data-page="relatorio-a3.html"><i class="ph-bold ph-file-text"></i><span>Relatório A3</span></li>
+                <li class="tool-category">Análise Estratégica</li>
+                <li class="tool-item" data-page="matriz-gut.html"><i class="ph-bold ph-warning-octagon"></i><span>Matriz GUT</span></li>
+                <li class="tool-item" data-page="matriz-esforco-impacto.html"><i class="ph-bold ph-scales"></i><span>Esforço x Impacto</span></li>
+                <li class="tool-item" data-page="swot.html"><i class="ph-bold ph-arrows-split"></i><span>Análise SWOT</span></li>
+                <li class="tool-item" data-page="kpi.html"><i class="ph-bold ph-gauge"></i><span>Dashboard KPIs</span></li>
+                <li class="tool-category">Qualidade Assegurada</li>
+                <li class="tool-item" data-page="folha-verificacao.html"><i class="ph-bold ph-list-dashes"></i><span>Folha de Verificação</span></li>
+                <li class="tool-item" data-page="fmea.html"><i class="ph-bold ph-shield-warning"></i><span>FMEA</span></li>
+                <li class="tool-item" data-page="8d.html"><i class="ph-bold ph-steps"></i><span>8D</span></li>
+                <li class="tool-item" data-page="ppap.html"><i class="ph-bold ph-stamp"></i><span>PPAP</span></li>
+                <li class="tool-item" data-page="apqp.html"><i class="ph-bold ph-map-trifold"></i><span>APQP</span></li>
+                <li class="tool-item" data-page="5s-checklist.html"><i class="ph-bold ph-check-square-offset"></i><span>Checklist 5S</span></li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="backup-btn" title="Fazer Backup de Todos os Dados"><i class="ph-bold ph-download-simple"></i><span>Backup</span></button>
+                <label for="restore-input" class="restore-label" title="Restaurar Dados"><i class="ph-bold ph-upload-simple"></i><span>Restaurar</span></label>
+                <input type="file" id="restore-input" style="display: none;" accept=".json">
+            </div>
+        </nav>
+        <main id="main-content">
+            <div class="container">
+                <h1>Relatório de Projeto DMAIC</h1>
+                <form id="dmaic-form">
+                    <div class="form-section">
+                        <h2>D - Define (Definir)</h2>
+                        <div class="form-group">
+                            <label for="dmaic-problema">Declaração do Problema e Contrato do Projeto:</label>
+                            <textarea id="dmaic-problema" rows="4" placeholder="Qual é o problema? Qual o impacto no negócio?"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="dmaic-metas">Metas (SMART) e Escopo do Projeto:</label>
+                            <textarea id="dmaic-metas" rows="4" placeholder="O que será medido? Qual o objetivo quantitativo? O que está dentro e fora do escopo?"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <h2>M - Measure (Medir)</h2>
+                        <div class="form-group">
+                            <label for="dmaic-medicao">Plano de Coleta de Dados e Validação do Sistema de Medição (MSA):</label>
+                            <textarea id="dmaic-medicao" rows="4" placeholder="Como os dados serão coletados? O sistema de medição é confiável?"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="dmaic-baseline">Performance Atual (Baseline) e Capabilidade do Processo:</label>
+                            <textarea id="dmaic-baseline" rows="4" placeholder="Qual o desempenho atual do processo? (Ex: Cpk, DPMO, Sigma)"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <h2>A - Analyze (Analisar)</h2>
+                        <div class="form-group">
+                            <label for="dmaic-analise">Análise das Causas Potenciais (Ishikawa, 5 Porquês, etc.):</label>
+                            <textarea id="dmaic-analise" rows="4" placeholder="Quais são as possíveis causas raiz do problema?"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="dmaic-hipoteses">Hipóteses e Validação Estatística das Causas Raiz:</label>
+                            <textarea id="dmaic-hipoteses" rows="4" placeholder="Quais causas foram confirmadas com dados como as verdadeiras causas raiz?"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <h2>I - Improve (Melhorar)</h2>
+                        <div class="form-group">
+                            <label for="dmaic-solucoes">Geração e Seleção de Soluções (Brainstorming, Matriz Esforço x Impacto):</label>
+                            <textarea id="dmaic-solucoes" rows="4" placeholder="Quais são as soluções propostas para atacar as causas raiz?"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="dmaic-piloto">Plano Piloto e Implementação das Melhorias:</label>
+                            <textarea id="dmaic-piloto" rows="4" placeholder="Como as soluções foram testadas e implementadas?"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <h2>C - Control (Controlar)</h2>
+                        <div class="form-group">
+                            <label for="dmaic-controle">Plano de Controle e Padronização (CEP, Poka-Yoke, Procedimentos):</label>
+                            <textarea id="dmaic-controle" rows="4" placeholder="Como garantir que os ganhos serão mantidos? Quais sistemas foram atualizados?"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="dmaic-resultados">Resultados Finais, Ganhos Financeiros e Lições Aprendidas:</label>
+                            <textarea id="dmaic-resultados" rows="4" placeholder="Qual foi o resultado final do projeto? A meta foi atingida? Qual o ganho financeiro?"></textarea>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn-primary btn-save">Salvar Relatório DMAIC</button>
+                        <button type="button" class="btn-secondary btn-clear">Limpar Formulário</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

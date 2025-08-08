@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPAP - Pan Eng Process & Quality</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class="ph-bold ph-rocket-launch"></i>
+                <div class="header-text-container">
+                    <span>Pan Eng Process & Quality</span>
+                    <small class="developer-credit">Desenvolvido por Marcos Garçon (Analista de Qualidade)</small>
+                </div>
+            </div>
+            <ul class="tool-list">
+                <li class="tool-item" data-page="index.html"><i class="ph-bold ph-house"></i><span>Início</span></li>
+                <li class="tool-category">Análise de Processos</li>
+                <li class="tool-item" data-page="cronoanalise.html"><i class="ph-bold ph-timer"></i><span>Cronoanálise MTM</span></li>
+                <li class="tool-item" data-page="vsm.html"><i class="ph-bold ph-projector-screen-chart"></i><span>Mapeamento VSM</span></li>
+                <li class="tool-item" data-page="histograma.html"><i class="ph-bold ph-chart-bar-horizontal"></i><span>Histograma</span></li>
+                <li class="tool-item" data-page="diagrama-dispersao.html"><i class="ph-bold ph-chart-scatter"></i><span>Diagrama de Dispersão</span></li>
+                <li class="tool-item" data-page="pareto.html"><i class="ph-bold ph-chart-bar"></i><span>Diagrama de Pareto</span></li>
+                <li class="tool-item" data-page="cep.html"><i class="ph-bold ph-chart-line"></i><span>CEP</span></li>
+                <li class="tool-item" data-page="msa.html"><i class="ph-bold ph-rulers"></i><span>MSA</span></li>
+                <li class="tool-category">Melhoria Contínua</li>
+                <li class="tool-item" data-page="dmaic.html"><i class="ph-bold ph-chart-pie-slice"></i><span>DMAIC</span></li>
+                <li class="tool-item" data-page="planodeacao.html"><i class="ph-bold ph-list-checks"></i><span>Plano de Ação (5W2H)</span></li>
+                <li class="tool-item" data-page="5porques.html"><i class="ph-bold ph-question"></i><span>5 Porquês</span></li>
+                <li class="tool-item" data-page="ishikawa.html"><i class="ph-bold ph-graph"></i><span>Ishikawa (6M)</span></li>
+                <li class="tool-item" data-page="kaizen.html"><i class="ph-bold ph-lightbulb"></i><span>Kaizen</span></li>
+                <li class="tool-item" data-page="relatorio-a3.html"><i class="ph-bold ph-file-text"></i><span>Relatório A3</span></li>
+                <li class="tool-category">Análise Estratégica</li>
+                <li class="tool-item" data-page="matriz-gut.html"><i class="ph-bold ph-warning-octagon"></i><span>Matriz GUT</span></li>
+                <li class="tool-item" data-page="matriz-esforco-impacto.html"><i class="ph-bold ph-scales"></i><span>Esforço x Impacto</span></li>
+                <li class="tool-item" data-page="swot.html"><i class="ph-bold ph-arrows-split"></i><span>Análise SWOT</span></li>
+                <li class="tool-item" data-page="kpi.html"><i class="ph-bold ph-gauge"></i><span>Dashboard KPIs</span></li>
+                <li class="tool-category">Qualidade Assegurada</li>
+                <li class="tool-item" data-page="folha-verificacao.html"><i class="ph-bold ph-list-dashes"></i><span>Folha de Verificação</span></li>
+                <li class="tool-item" data-page="fmea.html"><i class="ph-bold ph-shield-warning"></i><span>FMEA</span></li>
+                <li class="tool-item" data-page="8d.html"><i class="ph-bold ph-steps"></i><span>8D</span></li>
+                <li class="tool-item" data-page="ppap.html"><i class="ph-bold ph-stamp"></i><span>PPAP</span></li>
+                <li class="tool-item" data-page="apqp.html"><i class="ph-bold ph-map-trifold"></i><span>APQP</span></li>
+                <li class="tool-item" data-page="5s-checklist.html"><i class="ph-bold ph-check-square-offset"></i><span>Checklist 5S</span></li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="backup-btn" title="Fazer Backup de Todos os Dados"><i class="ph-bold ph-download-simple"></i><span>Backup</span></button>
+                <label for="restore-input" class="restore-label" title="Restaurar Dados"><i class="ph-bold ph-upload-simple"></i><span>Restaurar</span></label>
+                <input type="file" id="restore-input" style="display: none;" accept=".json">
+            </div>
+        </nav>
+        <main id="main-content">
+            <div class="container">
+                <h1>PPAP - Mandado de Submissão de Peça (PSW)</h1>
+                <form id="ppap-form">
+                    <div class="grid-container">
+                        <div class="form-group"><label for="part-name">Nome da Peça:</label><input type="text" id="part-name"></div>
+                        <div class="form-group"><label for="part-number">Número da Peça:</label><input type="text" id="part-number"></div>
+                        <div class="form-group"><label for="supplier-name">Nome do Fornecedor:</label><input type="text" id="supplier-name"></div>
+                        <div class="form-group"><label for="supplier-code">Código do Fornecedor:</label><input type="text" id="supplier-code"></div>
+                    </div>
+                    <div class="form-section">
+                        <h2>Checklist de Submissão de Itens do PPAP</h2>
+                        <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                            <div class="form-group"><label><input type="checkbox" id="ppap1"> 1. Registros de Projeto</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap2"> 2. Docs de Alteração</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap3"> 3. Aprovação Cliente</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap4"> 4. DFMEA</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap5"> 5. Fluxograma</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap6"> 6. PFMEA</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap7"> 7. Plano de Controle</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap8"> 8. Estudos de MSA</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap9"> 9. Resultados Dimensionais</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap10"> 10. Testes de Material</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap11"> 11. Estudos CEP</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap12"> 12. Docs Laboratório</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap13"> 13. Relatório Aparência</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap14"> 14. Amostras</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap15"> 15. Amostra Padrão</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap16"> 16. Auxílios de Verificação</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap17"> 17. Requisitos Cliente</label></div>
+                            <div class="form-group"><label><input type="checkbox" id="ppap18"> 18. PSW</label></div>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn-primary btn-save">Salvar Checklist</button>
+                        <button type="button" class="btn-secondary btn-clear">Limpar Formulário</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+        
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronoanálise MTM - Pan Eng Process & Quality</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class="ph-bold ph-rocket-launch"></i>
+                <span>Pan Eng Process & Quality</span>
+            </div>
+            <ul class="tool-list">
+                <li class="tool-item" data-page="index.html"><i class="ph-bold ph-house"></i><span>Início</span></li>
+                <li class="tool-category">Análise de Processos</li>
+                <li class="tool-item" data-page="cronoanalise.html"><i class="ph-bold ph-timer"></i><span>Cronoanálise MTM</span></li>
+                <li class="tool-item" data-page="histograma.html"><i class="ph-bold ph-chart-bar-horizontal"></i><span>Histograma</span></li>
+                <li class="tool-item" data-page="pareto.html"><i class="ph-bold ph-chart-bar"></i><span>Diagrama de Pareto</span></li>
+                <li class="tool-item" data-page="cep.html"><i class="ph-bold ph-chart-line"></i><span>CEP</span></li>
+                <li class="tool-item" data-page="msa.html"><i class="ph-bold ph-rulers"></i><span>MSA</span></li>
+                <li class="tool-category">Melhoria Contínua</li>
+                <li class="tool-item" data-page="planodeacao.html"><i class="ph-bold ph-list-checks"></i><span>Plano de Ação (5W2H)</span></li>
+                <li class="tool-item" data-page="5porques.html"><i class="ph-bold ph-question"></i><span>5 Porquês</span></li>
+                <li class="tool-item" data-page="ishikawa.html"><i class="ph-bold ph-graph"></i><span>Ishikawa (6M)</span></li>
+                <li class="tool-item" data-page="kaizen.html"><i class="ph-bold ph-lightbulb"></i><span>Kaizen</span></li>
+                <li class="tool-item" data-page="relatorio-a3.html"><i class="ph-bold ph-file-text"></i><span>Relatório A3</span></li>
+                <li class="tool-category">Análise Estratégica</li>
+                <li class="tool-item" data-page="matriz-gut.html"><i class="ph-bold ph-warning-octagon"></i><span>Matriz GUT</span></li>
+                <li class="tool-item" data-page="matriz-esforco-impacto.html"><i class="ph-bold ph-scales"></i><span>Esforço x Impacto</span></li>
+                <li class="tool-item" data-page="swot.html"><i class="ph-bold ph-arrows-split"></i><span>Análise SWOT</span></li>
+                <li class="tool-item" data-page="kpi.html"><i class="ph-bold ph-gauge"></i><span>Dashboard KPIs</span></li>
+                <li class="tool-category">Qualidade Assegurada</li>
+                <li class="tool-item" data-page="fmea.html"><i class="ph-bold ph-shield-warning"></i><span>FMEA</span></li>
+                <li class="tool-item" data-page="masp.html"><i class="ph-bold ph-path"></i><span>MASP</span></li>
+                <li class="tool-item" data-page="8d.html"><i class="ph-bold ph-steps"></i><span>8D</span></li>
+                <li class="tool-item" data-page="ppap.html"><i class="ph-bold ph-stamp"></i><span>PPAP</span></li>
+                <li class="tool-item" data-page="apqp.html"><i class="ph-bold ph-map-trifold"></i><span>APQP</span></li>
+                <li class="tool-item" data-page="5s-checklist.html"><i class="ph-bold ph-check-square-offset"></i><span>Checklist 5S</span></li>
+                <li class="tool-item" data-page="vda.html"><i class="ph-bold ph-car"></i><span>Auditoria VDA 6.3</span></li>
+                <li class="tool-item" data-page="iatf_iso.html"><i class="ph-bold ph-file-search"></i><span>Auditoria Interna</span></li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="backup-btn" title="Fazer Backup de Todos os Dados"><i class="ph-bold ph-download-simple"></i><span>Backup</span></button>
+                <label for="restore-input" class="restore-label" title="Restaurar Dados"><i class="ph-bold ph-upload-simple"></i><span>Restaurar</span></label>
+                <input type="file" id="restore-input" style="display: none;" accept=".json">
+            </div>
+        </nav>
+        <main id="main-content">
+            <div class="container">
+                <h1>Cronoanálise de Processo por Vídeo e MTM</h1>
+                <div class="video-analysis-grid">
+                    <div class="video-player-section">
+                        <h2>Vídeo do Processo</h2>
+                        <video id="video-player" controls></video>
+                        <div class="form-group"><label for="video-upload">Carregar vídeo do computador:</label><input type="file" id="video-upload" accept="video/*"></div>
+                    </div>
+                    <div class="video-controls-section">
+                        <h2>Controles e Medição</h2>
+                        <div class="crono-display" id="video-time-display">00:00.00</div>
+                        <div class="button-group"><button id="mark-point-btn" class="btn-primary">Marcar Etapa</button><button id="reset-analysis-btn" class="btn-danger">Zerar Análise</button></div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h2>Tabela de Análise MTM</h2>
+                    <table id="measure-points-table">
+                        <thead>
+                            <tr>
+                                <th>Nº</th>
+                                <th>Descrição da Etapa</th>
+                                <th>Código MTM</th>
+                                <th>Tipo</th>
+                                <th>TMU</th>
+                                <th>Fator (%)</th>
+                                <th>TMU Corrig.</th>
+                                <th>Tempo (s)</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6"><strong>TOTAIS</strong></td>
+                                <td id="total-tmu-corr"><strong>0.00</strong></td>
+                                <td id="total-tempo-s"><strong>0.0000</strong></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="form-section">
+                    <h2>Base de Dados MTM (Editável)</h2>
+                    <p>Adicione ou edite os códigos de movimento MTM e seus respectivos TMUs (Time Measurement Unit). A tabela de análise usará estes valores.</p>
+                    <table id="mtm-base-table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Tipo de Movimento</th>
+                                <th>TMU Padrão</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <div class="button-group">
+                        <button id="add-mtm-base-row" type="button" class="btn-secondary">Adicionar Código MTM</button>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h2>Análise e Oportunidades de Melhoria</h2>
+                    <form id="crono-analysis-form">
+                        <div class="form-group"><label for="analysis-notes">Observações, gargalos e sugestões de melhoria:</label><textarea id="analysis-notes" rows="8"></textarea></div>
+                        <div class="button-group"><button type="button" class="btn-primary btn-save">Salvar Análise</button></div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer class="app-footer">
+            
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
