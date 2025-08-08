@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual do Usuário - Pan Eng Process & Quality</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class="ph-bold ph-rocket-launch"></i>
+                <div class="header-text-container">
+                    <span>Pan Eng Process & Quality</span>
+                    <small class="developer-credit">Desenvolvido por Marcos Garçon (Analista de Qualidade)</small>
+                </div>
+            </div>
+            <ul class="tool-list">
+                <li class="tool-item" data-page="index.html"><i class="ph-bold ph-house"></i><span>Início</span></li>
+                <li class="tool-item" data-page="manual.html"><i class="ph-bold ph-book-open"></i><span>Manual do Usuário</span></li>
+                <li class="tool-category">Análise de Processos</li>
+                <li class="tool-item" data-page="cronoanalise.html"><i class="ph-bold ph-timer"></i><span>Cronoanálise MTM</span></li>
+                <li class="tool-item" data-page="vsm.html"><i class="ph-bold ph-projector-screen-chart"></i><span>Mapeamento VSM</span></li>
+                <li class="tool-item" data-page="histograma.html"><i class="ph-bold ph-chart-bar-horizontal"></i><span>Histograma</span></li>
+                <li class="tool-item" data-page="diagrama-dispersao.html"><i class="ph-bold ph-chart-scatter"></i><span>Diagrama de Dispersão</span></li>
+                <li class="tool-item" data-page="pareto.html"><i class="ph-bold ph-chart-bar"></i><span>Diagrama de Pareto</span></li>
+                <li class="tool-item" data-page="cep.html"><i class="ph-bold ph-chart-line"></i><span>CEP</span></li>
+                <li class="tool-item" data-page="msa.html"><i class="ph-bold ph-rulers"></i><span>MSA</span></li>
+                <li class="tool-category">Melhoria Contínua</li>
+                <li class="tool-item" data-page="dmaic.html"><i class="ph-bold ph-chart-pie-slice"></i><span>DMAIC</span></li>
+                <li class="tool-item" data-page="planodeacao.html"><i class="ph-bold ph-list-checks"></i><span>Plano de Ação (5W2H)</span></li>
+                <li class="tool-item" data-page="5porques.html"><i class="ph-bold ph-question"></i><span>5 Porquês</span></li>
+                <li class="tool-item" data-page="ishikawa.html"><i class="ph-bold ph-graph"></i><span>Ishikawa (6M)</span></li>
+                <li class="tool-item" data-page="kaizen.html"><i class="ph-bold ph-lightbulb"></i><span>Kaizen</span></li>
+                <li class="tool-item" data-page="relatorio-a3.html"><i class="ph-bold ph-file-text"></i><span>Relatório A3</span></li>
+                <li class="tool-category">Análise Estratégica</li>
+                <li class="tool-item" data-page="matriz-gut.html"><i class="ph-bold ph-warning-octagon"></i><span>Matriz GUT</span></li>
+                <li class="tool-item" data-page="matriz-esforco-impacto.html"><i class="ph-bold ph-scales"></i><span>Esforço x Impacto</span></li>
+                <li class="tool-item" data-page="swot.html"><i class="ph-bold ph-arrows-split"></i><span>Análise SWOT</span></li>
+                <li class="tool-item" data-page="kpi.html"><i class="ph-bold ph-gauge"></i><span>Dashboard KPIs</span></li>
+                <li class="tool-category">Qualidade Assegurada</li>
+                <li class="tool-item" data-page="folha-verificacao.html"><i class="ph-bold ph-list-dashes"></i><span>Folha de Verificação</span></li>
+                <li class="tool-item" data-page="fmea.html"><i class="ph-bold ph-shield-warning"></i><span>FMEA</span></li>
+                <li class="tool-item" data-page="8d.html"><i class="ph-bold ph-steps"></i><span>8D</span></li>
+                <li class="tool-item" data-page="masp.html"><i class="ph-bold ph-path"></i><span>MASP</span></li>
+                <li class="tool-item" data-page="ppap.html"><i class="ph-bold ph-stamp"></i><span>PPAP</span></li>
+                <li class="tool-item" data-page="apqp.html"><i class="ph-bold ph-map-trifold"></i><span>APQP</span></li>
+                <li class="tool-item" data-page="5s-checklist.html"><i class="ph-bold ph-check-square-offset"></i><span>Checklist 5S</span></li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="backup-btn" title="Fazer Backup de Todos os Dados"><i class="ph-bold ph-download-simple"></i><span>Backup</span></button>
+                <label for="restore-input" class="restore-label" title="Restaurar Dados"><i class="ph-bold ph-upload-simple"></i><span>Restaurar</span></label>
+                <input type="file" id="restore-input" style="display: none;" accept=".json">
+            </div>
+        </nav>
+        <main id="main-content">
+            <div class="container">
+                <h1><i class="ph-bold ph-book-open"></i> Manual do Usuário</h1>
+                
+                <div class="form-section">
+                    <h2>Visão Geral do Sistema</h2>
+                    <p>Bem-vindo ao <strong>Pan Eng Process & Quality</strong>. Este é um sistema completo de ferramentas de qualidade que funciona diretamente no seu navegador, sem necessidade de internet ou instalação. Todos os dados que você insere são salvos no seu próprio computador.</p>
+                </div>
+
+                <div class="form-section">
+                    <h2>Funcionalidades Globais</h2>
+                    <p>Existem duas funções na base da barra lateral que são essenciais para a segurança dos seus dados:</p>
+                    <ul>
+                        <li><strong>Backup:</strong> Ao clicar neste botão, o sistema gera um único arquivo <code>.json</code> que contém <strong>todos os dados de todas as ferramentas</strong>. Salve este arquivo regularmente em um local seguro (seu computador, um pendrive, na nuvem).</li>
+                        <li><strong>Restaurar:</strong> Se você trocar de computador, limpar o cache do navegador ou precisar recuperar seus dados, use este botão. Ele pedirá para você selecionar o arquivo de backup <code>.json</code> que você salvou, e irá restaurar todo o sistema para aquele ponto. <strong>Atenção:</strong> a restauração apaga os dados atuais para substituí-los pelos do backup.</li>
+                    </ul>
+                </div>
+
+                <div class="form-section">
+                    <h2>Guia de Ferramentas</h2>
+                    <p>As ferramentas são divididas em categorias. Abaixo está uma explicação de como usar os principais tipos de ferramentas.</p>
+                    
+                    <h3>Ferramentas de Formulário (5 Porquês, SWOT, A3, etc.)</h3>
+                    <p>Estas ferramentas são projetadas para a coleta estruturada de informações.</p>
+                    <ol>
+                        <li>Navegue até a ferramenta desejada na barra lateral.</li>
+                        <li>Preencha os campos de texto com as informações da sua análise.</li>
+                        <li>Clique no botão <strong>"Salvar"</strong> no final da página.</li>
+                        <li>Seus dados ficam salvos. Ao reabrir a página, eles serão carregados automaticamente. Use o botão "Limpar" para começar um novo formulário.</li>
+                    </ol>
+
+                    <h3>Ferramentas com Gráficos (Pareto, Histograma, Dispersão)</h3>
+                    <p>Estas ferramentas transformam dados brutos em análises visuais.</p>
+                    <ol>
+                        <li>Navegue até a ferramenta (ex: Diagrama de Pareto).</li>
+                        <li>Na tabela "Dados de Entrada", preencha as informações (ex: causas e frequências). Use o botão "Adicionar Linha" se precisar de mais campos.</li>
+                        <li>Clique no botão <strong>"Gerar/Atualizar Gráfico"</strong>. O gráfico será desenhado abaixo.</li>
+                        <li>Os dados da tabela são salvos automaticamente. Para compartilhar, use o botão <strong>"Exportar para CSV"</strong>, que gera um arquivo compatível com o Excel.</li>
+                    </ol>
+
+                    <h3>Guia Detalhado: Cronoanálise MTM por Vídeo</h3>
+                    <p>Esta é a ferramenta mais complexa e poderosa. Siga estes passos:</p>
+                    <ol>
+                        <li><strong>Carregue um Vídeo:</strong> Clique em "Carregar vídeo" e selecione um arquivo de operação do seu computador. O vídeo não sai da sua máquina.</li>
+                        <li><strong>Marque as Etapas:</strong> Dê play no vídeo. Ao final de cada movimento ou etapa que você quer medir, clique no botão <strong>"Marcar Etapa"</strong>. Uma nova linha aparecerá na "Tabela de Análise MTM".</li>
+                        <li><strong>Descreva e Codifique:</strong> Na nova linha que apareceu, você pode digitar uma descrição para a etapa. Se você usa a metodologia MTM, pode inserir um código (ex: `G1A`) no campo "Código MTM".</li>
+                        <li><strong>Use a Base MTM:</strong> Na parte inferior da página, há uma "Base de Dados MTM" editável. Se o código que você digitou na tabela de análise (passo 3) existir nesta base, o sistema preencherá automaticamente os campos "Tipo" e "TMU". Você pode adicionar, editar ou remover códigos nesta tabela base conforme sua necessidade.</li>
+                        <li><strong>Analise e Salve:</strong> Os tempos e totais são calculados automaticamente. Use a seção "Análise e Oportunidades de Melhoria" para suas conclusões e clique em "Salvar Análise".</li>
+                    </ol>
+                </div>
+                
+                <div class="form-section">
+                    <h2>Dicas Importantes</h2>
+                    <ul>
+                        <li><strong>FAÇA BACKUPS REGULARMENTE!</strong> A função de backup é sua maior garantia de que não perderá seu trabalho.</li>
+                        <li>Os dados são salvos por navegador. Se você usar o Chrome e depois o Firefox, os dados não serão compartilhados entre eles.</li>
+                        <li>Limpar o "cache" ou os "dados de navegação" do seu navegador irá **APAGAR TODOS OS DADOS** do sistema. Tenha sempre um backup antes de fazer isso.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
