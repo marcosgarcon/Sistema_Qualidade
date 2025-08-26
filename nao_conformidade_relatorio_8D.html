@@ -1,0 +1,97 @@
+<body>
+    <nav>
+        <div class="logo">Sistema de Qualidade</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Cadastro de Peças</a></li>
+            <li><a href="nao_conformidade.html">Não Conformidade (8D)</a></li>
+            <li><a href="engenharia_qualidade.html">Engenharia da Qualidade</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="form-section">
+            <h2>Registro de Não Conformidade e Relatório 8D</h2>
+            <form id="report-8d-form">
+                <fieldset>
+                    <legend>D0: Identificação do Problema</legend>
+                    <input type="text" id="peca-afetada" placeholder="Peça / Produto Afetado" required>
+                    <input type="text" id="lote" placeholder="Lote / Ordem de Produção">
+                    <input type="number" id="quantidade-afetada" placeholder="Quantidade Afetada">
+                    <textarea id="sintoma" placeholder="Descreva o sintoma inicial da não conformidade" required></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <legend>D1: Formar a Equipe</legend>
+                    <input type="text" id="lider-equipe" placeholder="Líder da Equipe" required>
+                    <textarea id="membros-equipe" placeholder="Membros da Equipe (um por linha)"></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <legend>D2: Descrição Detalhada do Problema (5W2H)</legend>
+                    <textarea id="d2-what" placeholder="O que (What)? Qual o problema exato?"></textarea>
+                    <textarea id="d2-who" placeholder="Quem (Who)? Quem está envolvido/afetado?"></textarea>
+                    <textarea id="d2-where" placeholder="Onde (Where)? Onde o problema ocorre (máquina, setor)?"></textarea>
+                    <textarea id="d2-when" placeholder="Quando (When)? Quando começou? Qual a frequência?"></textarea>
+                    <textarea id="d2-why" placeholder="Por que (Why)? Por que é um problema?"></textarea>
+                    <textarea id="d2-how" placeholder="Como (How)? Como o problema acontece?"></textarea>
+                    <textarea id="d2-how-many" placeholder="Quanto (How many)? Qual a dimensão quantitativa do problema?"></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <legend>D3: Ações Imediatas de Contenção</legend>
+                    <textarea id="d3-acoes" placeholder="Descreva as ações de contenção implementadas (ex: segregação do lote, inspeção 100%, etc.)" required></textarea>
+                    <label for="d3-efetividade">Efetividade da Contenção (%):</label>
+                    <input type="number" id="d3-efetividade" placeholder="Efetividade da Contenção (%)" min="0" max="100">
+                </fieldset>
+
+                <fieldset>
+                    <legend>D4: Análise da Causa Raiz (Ishikawa / 5 Porquês)</legend>
+                    <textarea id="d4-causa-raiz" placeholder="Descreva a causa raiz fundamental do problema. Use técnicas como 5 Porquês para chegar aqui." required></textarea>
+                    <textarea id="d4-causa-deteccao" placeholder="Descreva a causa raiz da não detecção. Por que o problema não foi detectado antes?"></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <legend>D5: Desenvolver Ações Corretivas Permanentes</legend>
+                    <textarea id="d5-acoes" placeholder="Liste as ações corretivas planejadas para eliminar a causa raiz. (O que será feito, quem fará, quando será feito)"></textarea>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>D6: Implementar e Validar Ações Corretivas</legend>
+                    <textarea id="d6-implementacao" placeholder="Descreva como as ações foram implementadas."></textarea>
+                    <textarea id="d6-validacao" placeholder="Descreva como a eficácia das ações foi validada (ex: monitoramento por 30 dias, auditoria, etc.)."></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <legend>D7: Prevenir a Recorrência</legend>
+                    <textarea id="d7-prevencao" placeholder="Quais documentos foram atualizados para prevenir a recorrência? (ex: FMEA, Plano de Controle, Instrução de Trabalho IT-XXXX)"></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <legend>D8: Reconhecer a Equipe</legend>
+                    <textarea id="d8-reconhecimento" placeholder="Descreva como a equipe foi reconhecida pelo trabalho realizado."></textarea>
+                </fieldset>
+
+                <button type="submit">Salvar Relatório 8D</button>
+            </form>
+        </section>
+
+        <section class="table-container">
+            <h3>Relatórios Salvos</h3>
+            <table id="nao-conformidade-table">
+                <thead>
+                    <tr>
+                        <th>Peça Afetada</th>
+                        <th>Sintoma</th>
+                        <th>Líder</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="nao_conformidade.js"></script>
+</body>
