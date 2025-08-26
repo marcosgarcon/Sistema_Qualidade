@@ -1,81 +1,119 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8D - Pan Eng Process & Quality</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório 8D - Eng Process & Quality</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
-    <div class="app-container">
-        <nav class="sidebar">
-            <div class="sidebar-header">
-                <i class="ph-bold ph-rocket-launch"></i>
-                <div class="header-text-container">
-                    <span>Pan Eng Process & Quality</span>
-                    <small class="developer-credit">Desenvolvido por Marcos Garçon (Analista de Qualidade)</small>
-                </div>
-            </div>
-            <ul class="tool-list">
-                <li class="tool-item" data-page="index.html"><i class="ph-bold ph-house"></i><span>Início</span></li>
-                <li class="tool-category">Análise de Processos</li>
-                <li class="tool-item" data-page="cronoanalise.html"><i class="ph-bold ph-timer"></i><span>Cronoanálise MTM</span></li>
-                <li class="tool-item" data-page="vsm.html"><i class="ph-bold ph-projector-screen-chart"></i><span>Mapeamento VSM</span></li>
-                <li class="tool-item" data-page="histograma.html"><i class="ph-bold ph-chart-bar-horizontal"></i><span>Histograma</span></li>
-                <li class="tool-item" data-page="diagrama-dispersao.html"><i class="ph-bold ph-chart-scatter"></i><span>Diagrama de Dispersão</span></li>
-                <li class="tool-item" data-page="pareto.html"><i class="ph-bold ph-chart-bar"></i><span>Diagrama de Pareto</span></li>
-                <li class="tool-item" data-page="cep.html"><i class="ph-bold ph-chart-line"></i><span>CEP</span></li>
-                <li class="tool-item" data-page="msa.html"><i class="ph-bold ph-rulers"></i><span>MSA</span></li>
-                <li class="tool-category">Melhoria Contínua</li>
-                <li class="tool-item" data-page="dmaic.html"><i class="ph-bold ph-chart-pie-slice"></i><span>DMAIC</span></li>
-                <li class="tool-item" data-page="planodeacao.html"><i class="ph-bold ph-list-checks"></i><span>Plano de Ação (5W2H)</span></li>
-                <li class="tool-item" data-page="5porques.html"><i class="ph-bold ph-question"></i><span>5 Porquês</span></li>
-                <li class="tool-item" data-page="ishikawa.html"><i class="ph-bold ph-graph"></i><span>Ishikawa (6M)</span></li>
-                <li class="tool-item" data-page="kaizen.html"><i class="ph-bold ph-lightbulb"></i><span>Kaizen</span></li>
-                <li class="tool-item" data-page="relatorio-a3.html"><i class="ph-bold ph-file-text"></i><span>Relatório A3</span></li>
-                <li class="tool-category">Análise Estratégica</li>
-                <li class="tool-item" data-page="matriz-gut.html"><i class="ph-bold ph-warning-octagon"></i><span>Matriz GUT</span></li>
-                <li class="tool-item" data-page="matriz-esforco-impacto.html"><i class="ph-bold ph-scales"></i><span>Esforço x Impacto</span></li>
-                <li class="tool-item" data-page="swot.html"><i class="ph-bold ph-arrows-split"></i><span>Análise SWOT</span></li>
-                <li class="tool-item" data-page="kpi.html"><i class="ph-bold ph-gauge"></i><span>Dashboard KPIs</span></li>
-                <li class="tool-category">Qualidade Assegurada</li>
-                <li class="tool-item" data-page="folha-verificacao.html"><i class="ph-bold ph-list-dashes"></i><span>Folha de Verificação</span></li>
-                <li class="tool-item" data-page="fmea.html"><i class="ph-bold ph-shield-warning"></i><span>FMEA</span></li>
-                <li class="tool-item" data-page="8d.html"><i class="ph-bold ph-steps"></i><span>8D</span></li>
-                <li class="tool-item" data-page="ppap.html"><i class="ph-bold ph-stamp"></i><span>PPAP</span></li>
-                <li class="tool-item" data-page="apqp.html"><i class="ph-bold ph-map-trifold"></i><span>APQP</span></li>
-                <li class="tool-item" data-page="5s-checklist.html"><i class="ph-bold ph-check-square-offset"></i><span>Checklist 5S</span></li>
-            </ul>
-            <div class="sidebar-footer">
-                <button id="backup-btn" title="Fazer Backup de Todos os Dados"><i class="ph-bold ph-download-simple"></i><span>Backup</span></button>
-                <label for="restore-input" class="restore-label" title="Restaurar Dados"><i class="ph-bold ph-upload-simple"></i><span>Restaurar</span></label>
-                <input type="file" id="restore-input" style="display: none;" accept=".json">
-            </div>
-        </nav>
-        <main id="main-content">
-            <div class="container">
-                <h1>Relatório 8D - Oito Disciplinas</h1>
-                <form id="8d-form">
-                    <div class="form-section"><h2>D1: Formar a Equipe</h2><textarea id="d1-team" rows="4"></textarea></div>
-                    <div class="form-section"><h2>D2: Descrever o Problema</h2><textarea id="d2-problem" rows="4"></textarea></div>
-                    <div class="form-section"><h2>D3: Implementar Ações de Contenção</h2><textarea id="d3-containment" rows="4"></textarea></div>
-                    <div class="form-section"><h2>D4: Identificar a Causa Raiz</h2><textarea id="d4-root-cause" rows="4"></textarea></div>
-                    <div class="form-section"><h2>D5: Desenvolver Ações Corretivas</h2><textarea id="d5-corrective" rows="4"></textarea></div>
-                    <div class="form-section"><h2>D6: Implementar e Validar Ações</h2><textarea id="d6-implementation" rows="4"></textarea></div>
-                    <div class="form-section"><h2>D7: Prevenir a Recorrência</h2><textarea id="d7-prevention" rows="4"></textarea></div>
-                    <div class="form-section"><h2>D8: Reconhecer a Equipe</h2><textarea id="d8-recognition" rows="4"></textarea></div>
-                    <div class="button-group">
-                        <button type="button" class="btn-primary btn-save">Salvar Relatório</button>
-                        <button type="button" class="btn-secondary btn-clear">Limpar Formulário</button>
-                    </div>
-                </form>
-            </div>
-        </main>
-        
-        </footer>
-    </div>
-    <script src="app.js"></script>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <i class="ph-bold ph-rocket-launch"></i>
+        <div class="header-text-container">
+          <span>Pan Eng Process & Quality</span>
+          <small class="developer-credit">Desenvolvido por Marcos Garçon (Analista de Qualidade)</small>
+        </div>
+      </div>
+      <ul class="tool-list">
+        <li class="tool-item" data-page="index.html"><i class="ph-bold ph-house"></i><span>Início</span></li>
+        <li class="tool-category">Qualidade Assegurada</li>
+        <li class="tool-item" data-page="folha-verificacao.html"><i class="ph-bold ph-list-dashes"></i><span>Folha de Verificação</span></li>
+        <li class="tool-item" data-page="fmea.html"><i class="ph-bold ph-shield-warning"></i><span>FMEA</span></li>
+        <li class="tool-item active" data-page="8d.html"><i class="ph-bold ph-steps"></i><span>8D</span></li>
+        <li class="tool-item" data-page="ppap.html"><i class="ph-bold ph-stamp"></i><span>PPAP</span></li>
+        <li class="tool-item" data-page="apqp.html"><i class="ph-bold ph-map-trifold"></i><span>APQP</span></li>
+        <li class="tool-item" data-page="5s-checklist.html"><i class="ph-bold ph-check-square-offset"></i><span>Checklist 5S</span></li>
+      </ul>
+      <div class="sidebar-footer">
+        <button onclick="salvarRelatorio()" title="Salvar Relatório"><i class="ph-bold ph-floppy-disk"></i><span>Salvar</span></button>
+        <button onclick="restaurarRelatorio()" title="Restaurar Relatório"><i class="ph-bold ph-upload-simple"></i><span>Restaurar</span></button>
+        <button onclick="limparRelatorio()" title="Limpar Relatório"><i class="ph-bold ph-trash"></i><span>Limpar</span></button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+      <div class="container">
+        <h1><i class="ph-bold ph-steps"></i> Relatório 8D</h1>
+        <p>Preencha cada disciplina do método 8D para análise e solução de problemas.</p>
+
+        <form id="form-8d" class="formulario">
+          <div class="form-section">
+            <h2>D1 – Formação da Equipe</h2>
+            <textarea name="d1" rows="4" placeholder="Informe os membros da equipe e suas funções"></textarea>
+          </div>
+
+          <div class="form-section">
+            <h2>D2 – Descrição do Problema</h2>
+            <textarea name="d2" rows="4" placeholder="Descreva o problema de forma clara e objetiva"></textarea>
+          </div>
+
+          <div class="form-section">
+            <h2>D3 – Ação de Contenção</h2>
+            <textarea name="d3" rows="4" placeholder="Defina ações imediatas para conter o problema"></textarea>
+          </div>
+
+          <div class="form-section">
+            <h2>D4 – Identificação da Causa Raiz</h2>
+            <textarea name="d4" rows="4" placeholder="Descreva a análise realizada e a causa raiz encontrada"></textarea>
+          </div>
+
+          <div class="form-section">
+            <h2>D5 – Ações Corretivas</h2>
+            <textarea name="d5" rows="4" placeholder="Liste as ações corretivas definidas"></textarea>
+          </div>
+
+          <div class="form-section">
+            <h2>D6 – Implementação das Ações</h2>
+            <textarea name="d6" rows="4" placeholder="Descreva como e quando as ações foram implementadas"></textarea>
+          </div>
+
+          <div class="form-section">
+            <h2>D7 – Prevenção de Reincidência</h2>
+            <textarea name="d7" rows="4" placeholder="Liste medidas para evitar que o problema volte a ocorrer"></textarea>
+          </div>
+
+          <div class="form-section">
+            <h2>D8 – Reconhecimento</h2>
+            <textarea name="d8" rows="4" placeholder="Registre os aprendizados e reconheça a equipe envolvida"></textarea>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function salvarRelatorio() {
+      const dados = {};
+      document.querySelectorAll("#form-8d textarea").forEach(el => {
+        dados[el.name] = el.value;
+      });
+      localStorage.setItem("relatorio8D", JSON.stringify(dados));
+      alert("✅ Relatório 8D salvo com sucesso!");
+    }
+
+    function restaurarRelatorio() {
+      const dados = JSON.parse(localStorage.getItem("relatorio8D"));
+      if (dados) {
+        document.querySelectorAll("#form-8d textarea").forEach(el => {
+          el.value = dados[el.name] || "";
+        });
+        alert("📂 Relatório 8D restaurado com sucesso!");
+      } else {
+        alert("⚠️ Nenhum relatório salvo encontrado.");
+      }
+    }
+
+    function limparRelatorio() {
+      if (confirm("Tem certeza que deseja limpar todos os campos?")) {
+        document.querySelectorAll("#form-8d textarea").forEach(el => el.value = "");
+        localStorage.removeItem("relatorio8D");
+      }
+    }
+  </script>
 </body>
 </html>
