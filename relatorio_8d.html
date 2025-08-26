@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório 8D - Sistema de Qualidade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">Sistema de Qualidade</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Cadastro de Peças</a></li>
+            <li><a href="relatorio_8d.html" class="active">Relatório 8D</a></li>
+            <li><a href="engenharia_qualidade.html">Engenharia da Qualidade</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <section class="form-section">
+            <h2>Registro de Não Conformidade e Relatório 8D</h2>
+            <form id="report-8d-form">
+                <fieldset>
+                    <legend>D0: Identificação do Problema</legend>
+                    <input type="text" id="peca-afetada" placeholder="Peça / Produto Afetado" required>
+                    <textarea id="sintoma" placeholder="Descreva o sintoma inicial da não conformidade" required></textarea>
+                </fieldset>
+                <fieldset>
+                    <legend>D1: Formar a Equipe</legend>
+                    <input type="text" id="lider-equipe" placeholder="Líder da Equipe" required>
+                    <textarea id="membros-equipe" placeholder="Membros da Equipe (um por linha)"></textarea>
+                </fieldset>
+                <fieldset>
+                    <legend>D3: Ações Imediatas de Contenção</legend>
+                    <textarea id="d3-acoes" placeholder="Descreva as ações de contenção implementadas (ex: segregação do lote, inspeção 100%, etc.)" required></textarea>
+                </fieldset>
+                <fieldset>
+                    <legend>D4: Análise da Causa Raiz (5 Porquês)</legend>
+                    <textarea id="d4-causa-raiz" placeholder="Descreva a causa raiz fundamental do problema." required></textarea>
+                </fieldset>
+                <fieldset>
+                    <legend>D5: Desenvolver Ações Corretivas Permanentes</legend>
+                    <textarea id="d5-acoes" placeholder="Liste as ações corretivas planejadas para eliminar a causa raiz."></textarea>
+                </fieldset>
+                 <fieldset>
+                    <legend>D7: Prevenir a Recorrência</legend>
+                    <textarea id="d7-prevencao" placeholder="Quais documentos foram atualizados para prevenir a recorrência? (ex: FMEA, Plano de Controle, IT-XXXX)"></textarea>
+                </fieldset>
+                <button type="submit">Salvar Relatório 8D</button>
+            </form>
+        </section>
+        <section class="table-container">
+            <h3>Relatórios Salvos</h3>
+            <table id="nao-conformidade-table">
+                <thead>
+                    <tr>
+                        <th>Peça Afetada</th>
+                        <th>Sintoma</th>
+                        <th>Líder</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
+    <script src="relatorio_8d.js"></script>
+</body>
+</html>
