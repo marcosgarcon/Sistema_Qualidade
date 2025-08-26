@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engenharia da Qualidade - Sistema de Qualidade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">Sistema de Qualidade</div>
+        <ul class="nav-links">
+             </ul>
+    </nav>
+
+    <main class="container">
+        <section class="quality-section">
+            <h2>FMEA de Processo</h2>
+            <form id="fmea-form">
+                <input type="text" id="fmea-etapa" placeholder="Etapa do Processo" required>
+                <input type="text" id="fmea-modo-falha" placeholder="Modo de Falha Potencial" required>
+                <input type="number" id="fmea-severidade" placeholder="Severidade (1-10)" min="1" max="10" required>
+                <input type="number" id="fmea-ocorrencia" placeholder="Ocorrência (1-10)" min="1" max="10" required>
+                <input type="number" id="fmea-deteccao" placeholder="Detecção (1-10)" min="1" max="10" required>
+                <button type="submit">Adicionar ao FMEA</button>
+            </form>
+            <div class="table-container">
+                <table id="fmea-table">
+                    <thead>
+                        <tr>
+                            <th>Etapa</th>
+                            <th>Modo de Falha</th>
+                            <th>Sev.</th>
+                            <th>Oco.</th>
+                            <th>Det.</th>
+                            <th>RPN</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="quality-section">
+            <h2>Plano de Controle</h2>
+            <form id="control-plan-form">
+                <input type="text" id="cp-etapa" placeholder="Etapa do Processo" required>
+                <input type="text" id="cp-caracteristica" placeholder="Característica do Produto/Processo" required>
+                <input type="text" id="cp-especificacao" placeholder="Especificação / Tolerância" required>
+                <input type="text" id="cp-amostra" placeholder="Amostra (Tamanho/Freq.)">
+                <input type="text" id="cp-metodo" placeholder="Método de Controle">
+                <button type="submit">Adicionar ao Plano de Controle</button>
+            </form>
+            <div class="table-container">
+                <table id="control-plan-table">
+                    <thead>
+                        <tr>
+                            <th>Etapa</th>
+                            <th>Característica</th>
+                            <th>Especificação</th>
+                            <th>Amostra</th>
+                            <th>Método</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="engenharia_qualidade.js"></script>
+</body>
+</html>
