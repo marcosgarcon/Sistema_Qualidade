@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.classList.contains('view-btn')) {
             const report = reports.find(r => r.id === id);
             if (report) {
-                // Preenche o formulário com os dados do relatório para visualização/edição
                 for (const key in report) {
                     const element = document.getElementById(key);
                     if (element) {
