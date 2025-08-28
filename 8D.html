@@ -1,119 +1,61 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Relatório 8D - Eng Process & Quality</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório 8D - Sistema de Qualidade</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div class="app-container">
-    <!-- Sidebar -->
-    <nav class="sidebar">
-      <div class="sidebar-header">
-        <i class="ph-bold ph-rocket-launch"></i>
-        <div class="header-text-container">
-          <span>Pan Eng Process & Quality</span>
-          <small class="developer-credit">Desenvolvido por Marcos Garçon (Analista de Qualidade)</small>
-        </div>
-      </div>
-      <ul class="tool-list">
-        <li class="tool-item" data-page="index.html"><i class="ph-bold ph-house"></i><span>Início</span></li>
-        <li class="tool-category">Qualidade Assegurada</li>
-        <li class="tool-item" data-page="folha-verificacao.html"><i class="ph-bold ph-list-dashes"></i><span>Folha de Verificação</span></li>
-        <li class="tool-item" data-page="fmea.html"><i class="ph-bold ph-shield-warning"></i><span>FMEA</span></li>
-        <li class="tool-item active" data-page="8d.html"><i class="ph-bold ph-steps"></i><span>8D</span></li>
-        <li class="tool-item" data-page="ppap.html"><i class="ph-bold ph-stamp"></i><span>PPAP</span></li>
-        <li class="tool-item" data-page="apqp.html"><i class="ph-bold ph-map-trifold"></i><span>APQP</span></li>
-        <li class="tool-item" data-page="5s-checklist.html"><i class="ph-bold ph-check-square-offset"></i><span>Checklist 5S</span></li>
-      </ul>
-      <div class="sidebar-footer">
-        <button onclick="salvarRelatorio()" title="Salvar Relatório"><i class="ph-bold ph-floppy-disk"></i><span>Salvar</span></button>
-        <button onclick="restaurarRelatorio()" title="Restaurar Relatório"><i class="ph-bold ph-upload-simple"></i><span>Restaurar</span></button>
-        <button onclick="limparRelatorio()" title="Limpar Relatório"><i class="ph-bold ph-trash"></i><span>Limpar</span></button>
-      </div>
+<body>    
     </nav>
-
-    <!-- Main Content -->
-    <main id="main-content">
-      <div class="container">
-        <h1><i class="ph-bold ph-steps"></i> Relatório 8D</h1>
-        <p>Preencha cada disciplina do método 8D para análise e solução de problemas.</p>
-
-        <form id="form-8d" class="formulario">
-          <div class="form-section">
-            <h2>D1 – Formação da Equipe</h2>
-            <textarea name="d1" rows="4" placeholder="Informe os membros da equipe e suas funções"></textarea>
-          </div>
-
-          <div class="form-section">
-            <h2>D2 – Descrição do Problema</h2>
-            <textarea name="d2" rows="4" placeholder="Descreva o problema de forma clara e objetiva"></textarea>
-          </div>
-
-          <div class="form-section">
-            <h2>D3 – Ação de Contenção</h2>
-            <textarea name="d3" rows="4" placeholder="Defina ações imediatas para conter o problema"></textarea>
-          </div>
-
-          <div class="form-section">
-            <h2>D4 – Identificação da Causa Raiz</h2>
-            <textarea name="d4" rows="4" placeholder="Descreva a análise realizada e a causa raiz encontrada"></textarea>
-          </div>
-
-          <div class="form-section">
-            <h2>D5 – Ações Corretivas</h2>
-            <textarea name="d5" rows="4" placeholder="Liste as ações corretivas definidas"></textarea>
-          </div>
-
-          <div class="form-section">
-            <h2>D6 – Implementação das Ações</h2>
-            <textarea name="d6" rows="4" placeholder="Descreva como e quando as ações foram implementadas"></textarea>
-          </div>
-
-          <div class="form-section">
-            <h2>D7 – Prevenção de Reincidência</h2>
-            <textarea name="d7" rows="4" placeholder="Liste medidas para evitar que o problema volte a ocorrer"></textarea>
-          </div>
-
-          <div class="form-section">
-            <h2>D8 – Reconhecimento</h2>
-            <textarea name="d8" rows="4" placeholder="Registre os aprendizados e reconheça a equipe envolvida"></textarea>
-          </div>
-        </form>
-      </div>
+    <main class="container">
+        <section class="form-section">
+            <h2>Registro de Não Conformidade e Relatório 8D</h2>
+            <form id="report-8d-form">
+                <fieldset>
+                    <legend>D0: Identificação do Problema</legend>
+                    <input type="text" id="peca-afetada" placeholder="Peça / Produto Afetado" required>
+                    <textarea id="sintoma" placeholder="Descreva o sintoma inicial da não conformidade" required></textarea>
+                </fieldset>
+                <fieldset>
+                    <legend>D1: Formar a Equipe</legend>
+                    <input type="text" id="lider-equipe" placeholder="Líder da Equipe" required>
+                    <textarea id="membros-equipe" placeholder="Membros da Equipe (um por linha)"></textarea>
+                </fieldset>
+                <fieldset>
+                    <legend>D3: Ações Imediatas de Contenção</legend>
+                    <textarea id="d3-acoes" placeholder="Descreva as ações de contenção implementadas (ex: segregação do lote, inspeção 100%, etc.)" required></textarea>
+                </fieldset>
+                <fieldset>
+                    <legend>D4: Análise da Causa Raiz (5 Porquês)</legend>
+                    <textarea id="d4-causa-raiz" placeholder="Descreva a causa raiz fundamental do problema." required></textarea>
+                </fieldset>
+                <fieldset>
+                    <legend>D5: Desenvolver Ações Corretivas Permanentes</legend>
+                    <textarea id="d5-acoes" placeholder="Liste as ações corretivas planejadas para eliminar a causa raiz."></textarea>
+                </fieldset>
+                 <fieldset>
+                    <legend>D7: Prevenir a Recorrência</legend>
+                    <textarea id="d7-prevencao" placeholder="Quais documentos foram atualizados para prevenir a recorrência? (ex: FMEA, Plano de Controle, IT-XXXX)"></textarea>
+                </fieldset>
+                <button type="submit">Salvar Relatório 8D</button>
+            </form>
+        </section>
+        <section class="table-container">
+            <h3>Relatórios Salvos</h3>
+            <table id="nao-conformidade-table">
+                <thead>
+                    <tr>
+                        <th>Peça Afetada</th>
+                        <th>Sintoma</th>
+                        <th>Líder</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
     </main>
-  </div>
-
-  <script>
-    function salvarRelatorio() {
-      const dados = {};
-      document.querySelectorAll("#form-8d textarea").forEach(el => {
-        dados[el.name] = el.value;
-      });
-      localStorage.setItem("relatorio8D", JSON.stringify(dados));
-      alert("✅ Relatório 8D salvo com sucesso!");
-    }
-
-    function restaurarRelatorio() {
-      const dados = JSON.parse(localStorage.getItem("relatorio8D"));
-      if (dados) {
-        document.querySelectorAll("#form-8d textarea").forEach(el => {
-          el.value = dados[el.name] || "";
-        });
-        alert("📂 Relatório 8D restaurado com sucesso!");
-      } else {
-        alert("⚠️ Nenhum relatório salvo encontrado.");
-      }
-    }
-
-    function limparRelatorio() {
-      if (confirm("Tem certeza que deseja limpar todos os campos?")) {
-        document.querySelectorAll("#form-8d textarea").forEach(el => el.value = "");
-        localStorage.removeItem("relatorio8D");
-      }
-    }
-  </script>
+    <script src="nao_conformidade.js"></script>
 </body>
 </html>
